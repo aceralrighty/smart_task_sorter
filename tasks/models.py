@@ -1,3 +1,4 @@
+import uuid
 from dataclasses import dataclass
 from datetime import datetime
 from enum import Enum, auto
@@ -12,7 +13,7 @@ class Priority(Enum):
 
 @dataclass
 class Task:
-    id: str
+    id = uuid
     title: str
     description: Optional[str] = None
     due_date: Optional[datetime] = None

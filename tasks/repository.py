@@ -1,3 +1,4 @@
+import uuid
 from typing import Protocol, Optional, List, Dict
 
 from tasks.models import Task
@@ -5,12 +6,12 @@ from tasks.models import Task
 
 class TaskRepository(Protocol):
     def __init__(self):
-        self._tasks: Dict[str, Task] = {}
+        self._tasks: Dict[uuid, Task] = {}
 
     def add(self, task: Task) -> None:
         self._tasks[task.id] = task
 
-    def get(self, task_id: str) -> Optional[Task]:
+    def get(self, task_id: uuid) -> Optional[Task]:
         return self._tasks.get(task_id)
 
     def list(self) -> List[Task]:
